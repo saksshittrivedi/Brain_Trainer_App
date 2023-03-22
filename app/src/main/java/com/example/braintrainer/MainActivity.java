@@ -30,15 +30,17 @@ public class MainActivity extends AppCompatActivity {
     int numberOfQuestions;
 
     public void chooseAnswer(View view){
-        if(Integer.toString(locationOfCorrectAnswers).equals(view.getTag().toString())){
-            resultTextView.setText("Correct!");
-            score++;
-        }else {
-            resultTextView.setText("Wrong :/");
+        if(!resultTextView.getText().toString().equals("Done!")) {
+            if(Integer.toString(locationOfCorrectAnswers).equals(view.getTag().toString())){
+                resultTextView.setText("Correct!");
+                score++;
+            }else {
+                resultTextView.setText("Wrong :/");
+            }
+            numberOfQuestions++;
+            scoreTextView.setText(Integer.toString(score) + "/" + Integer.toString(numberOfQuestions));
+            newQuestion();
         }
-        numberOfQuestions++;
-        scoreTextView.setText(Integer.toString(score) + "/" + Integer.toString(numberOfQuestions));
-        newQuestion();
     }
 
     public void playAgain(final View view){
